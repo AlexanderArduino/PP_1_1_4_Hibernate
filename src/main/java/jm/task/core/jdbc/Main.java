@@ -8,7 +8,8 @@ public class Main {
         UserServiceImpl usi = new UserServiceImpl();
 
         usi.createUsersTable();
-        usi.saveUser("Ivan", "Petrov", (byte)20);
+        usi.removeUserById(2);
+//        usi.saveUser("Ivan", "Petrov", (byte)20);
 //        usi.dropUsersTable();
         }
 }
