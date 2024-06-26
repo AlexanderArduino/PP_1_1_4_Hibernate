@@ -15,17 +15,16 @@ public class Util {
     private static final String HIBERNATE_DIALECT = "org.hibernate.dialect.MySQL8Dialect";
     private static final String SHOW_SQL = "true";
     private static final String CURRENT_SESSION_CONTEXT_CLASS = "thread";
-//    public static SessionFactory sessionFactory = null;
 
     private static Properties getProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.driver_class", DB_DRIVER);
-        properties.setProperty("hibernate.connection.url", DB_URL);
-        properties.setProperty("hibernate.connection.username", DB_USER);
-        properties.setProperty("hibernate.connection.password", DB_PASS);
+        properties.setProperty("hibernate.driver_class", DB_DRIVER); // driver mysql
+        properties.setProperty("hibernate.connection.url", DB_URL);     //url DB
+        properties.setProperty("hibernate.connection.username", DB_USER);   //user DB
+        properties.setProperty("hibernate.connection.password", DB_PASS);   //user pass
 
-        properties.setProperty("hibernate.dialect", HIBERNATE_DIALECT);
-        properties.setProperty("hibernate.show_sql", SHOW_SQL);
+        properties.setProperty("hibernate.dialect", HIBERNATE_DIALECT);     //SQL language for MySQL
+        properties.setProperty("hibernate.show_sql", SHOW_SQL);             // show Hibernate SQL query
         properties.setProperty("hibernate.current_session_context_class", CURRENT_SESSION_CONTEXT_CLASS);
         return properties;
     }
