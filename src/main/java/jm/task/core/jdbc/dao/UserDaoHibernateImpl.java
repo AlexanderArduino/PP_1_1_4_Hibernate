@@ -104,18 +104,18 @@ public class UserDaoHibernateImpl implements UserDao {
                 User user = session.get(User.class, id);
                 session.delete(user);
                 transaction.commit();
-                System.out.println("Новый User был удален в таблицу");
+                System.out.printf("Новый User %d был удален в таблицу\n", id);
             } catch (TransactionException transactionException) {
                 if (transaction.getStatus() == TransactionStatus.ACTIVE
                         || transaction.getStatus() == TransactionStatus.MARKED_ROLLBACK) {
                     transaction.rollback();
-                    System.out.println("Удаление нового User не удалось");
+                    System.out.println("Удаление нового User по ID не удалось");
                 }
                 transactionException.printStackTrace();
             }
         } catch (HibernateException hibernateException) {
             hibernateException.printStackTrace();
-            System.out.println("Удаление нового user. Организация сессии завершилась неудачей");
+            System.out.println("Удаление нового user по ID. Организация сессии завершилась неудачей");
         }
     }
 
@@ -128,18 +128,18 @@ public class UserDaoHibernateImpl implements UserDao {
                 transaction.begin();
                 allUsers = session.createQuery("FROM User").getResultList();
                 transaction.commit();
-                System.out.println("Новый User был удален в таблицу");
+                System.out.println("Получение все User's из таблицы user завершилось");
             } catch (TransactionException transactionException) {
                 if (transaction.getStatus() == TransactionStatus.ACTIVE
                         || transaction.getStatus() == TransactionStatus.MARKED_ROLLBACK) {
                     transaction.rollback();
-                    System.out.println("Удаление нового User не удалось");
+                    System.out.println("Получение всех User's из таблицы user не удалось");
                 }
                 transactionException.printStackTrace();
             }
         } catch (HibernateException hibernateException) {
             hibernateException.printStackTrace();
-            System.out.println("Удаление нового user. Организация сессии завершилась неудачей");
+            System.out.println("Получение всех User's из таблицы user. Организация сессии завершилась неудачей");
         }
         return allUsers;
     }
